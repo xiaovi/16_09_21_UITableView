@@ -9,10 +9,10 @@
 #import "ViewController.h"
 
 @interface ViewController ()<UITableViewDataSource>
+
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSArray *list1;
-@property (nonatomic, strong) NSArray *list2;
-@property (nonatomic, strong) NSArray *list3;
+
+@property (nonatomic, strong) NSArray *allList;
 
 @end
 
@@ -21,9 +21,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:[self loadTableView]];
-    _list1 = @[@"熊猫", @"黑猩猩", @"长颈鹿"];
-    _list2 = @[@"郁金香", @"猫薄荷", @"三叶草", @"香蕉"];
-    _list3 = @[@"🎧", @"📱", @"🍫", @"🌲"];
+    _allList = @[@[@"🐻", @"🐈", @"🐩", @"🐱"],
+                 @[@"🌷", @"🍀", @"🍌", @"🌲"],
+                 @[@"🎧", @"📱", @"🍫"],
+                 @[@"🎻", @"🎸", @"🎹"],
+                 @[@"⚛"]
+                 ];
+
 
 }
 -(UITableView *)loadTableView{
@@ -40,40 +44,21 @@
 
 #pragma mark 一共有多少组数据
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return _allList.count;
 }
 
 #pragma mark 每组数据中有多少行数据
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0)
-    {
-        return  _list1.count;
-    }else if(section == 1)
-    {
-        return _list2.count;
-    }else{
-        return  _list3.count;
-    }
+    return [_allList[section] count];
 }
 
 #pragma mark 每一行具体有什么数据
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    NSString *text = nil;
-    if (indexPath.section == 0) {
-        text = _list1[indexPath.row];
 
-    }else if(indexPath.section == 1){
-
-        text = _list2[indexPath.row];
-    }
-    else{
-        text = _list3[indexPath.row];
-    }
-
-    cell.textLabel.text = text;
+    cell.textLabel.text = _allList[indexPath.section][indexPath.row];
 
     return cell;
 }
