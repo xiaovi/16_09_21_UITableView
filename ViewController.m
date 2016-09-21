@@ -28,27 +28,19 @@
     [super viewDidLoad];
     [self.view addSubview:[self loadTableView]];
 
-    ObjectInRoom *animals = [[ObjectInRoom alloc] init];
-    animals.header = @"动物";
-    animals.footer = @"这里有一些动物";
-    animals.content = @[@"🐻", @"🐈", @"🐩", @"🐱"];
 
-    ObjectInRoom *instruments = [[ObjectInRoom alloc] init];
-    instruments.header = @"乐器";
-    instruments.footer = @"这里有一些乐器";
-    instruments.content = @[@"🎻", @"🎸", @"🎹"];
+    ObjectInRoom *animals = [ObjectInRoom objectInRoomWithHeader:@"动物" footer:@"这里有一些动物" content:@[@"🐻", @"🐈", @"🐩", @"🐱"]];
 
-    ObjectInRoom *elctric = [[ObjectInRoom alloc] init];
-    elctric.header = @"电子用品";
-    elctric.footer = @"这里有一副耳机跟手机";
-    elctric.content = @[@"🎧", @"📱"];
+    ObjectInRoom *instruments = [ObjectInRoom objectInRoomWithHeader:@"乐器" footer:@"这里有一些乐器" content:@[@"🎻", @"🎸", @"🎹"]];
 
-    ObjectInRoom *plants = [[ObjectInRoom alloc] init];
-    plants.header = @"植物";
-    plants.footer = @"这里有一些植物";
-    plants.content = @[@"🌷", @"🍀", @"🍌", @"🌲"];
 
-    _allList = @[animals, instruments, elctric, plants];
+    ObjectInRoom *electric = [ObjectInRoom objectInRoomWithHeader:@"电子产品" footer:@"这里有一副耳机跟手机" content:@[@"🎧", @"📱"]];
+
+
+    ObjectInRoom * plants = [ObjectInRoom objectInRoomWithHeader:@"植物" footer:@"这里有一些植物" content:@[@"🌷", @"🍀", @"🍌", @"🌲"]];
+
+
+    _allList = @[animals, instruments, electric, plants];
 
 
 }
