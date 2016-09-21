@@ -32,8 +32,10 @@
 }
 -(UITableView *)loadTableView{
     if (!_tableView) {
+        //初始化UITableView, 设置style为UITableViewStyleGrouped.
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds
                                                   style:UITableViewStyleGrouped];
+        //将UITableView的数据源设置为控制器本身.
         _tableView.dataSource = self;
     }
     return _tableView;
@@ -50,12 +52,14 @@
 #pragma mark 每组数据中有多少行数据
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    //返回第section组所在的数组所包含的个数
     return [_allList[section] count];
 }
 
 #pragma mark 每一行具体有什么数据
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
+    //创建一个cell
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
 
     cell.textLabel.text = _allList[indexPath.section][indexPath.row];
