@@ -29,18 +29,13 @@
     [self.view addSubview:[self loadTableView]];
 
 
-    ObjectInRoom *animals = [ObjectInRoom objectInRoomWithHeader:@"动物" footer:@"这里有一些动物" content:@[@"🐻", @"🐈", @"🐩", @"🐱"]];
-
-    ObjectInRoom *instruments = [ObjectInRoom objectInRoomWithHeader:@"乐器" footer:@"这里有一些乐器" content:@[@"🎻", @"🎸", @"🎹"]];
-
-
-    ObjectInRoom *electric = [ObjectInRoom objectInRoomWithHeader:@"电子产品" footer:@"这里有一副耳机跟手机" content:@[@"🎧", @"📱"]];
-
-
-    ObjectInRoom * plants = [ObjectInRoom objectInRoomWithHeader:@"植物" footer:@"这里有一些植物" content:@[@"🌷", @"🍀", @"🍌", @"🌲"]];
-
-
-    _allList = @[animals, instruments, electric, plants];
+    _allList = @
+    [
+        [ObjectInRoom objectInRoomWithHeader:@"动物" footer:@"这里有一些动物" content:@[@"🐻", @"🐈", @"🐩", @"🐱"]],
+        [ObjectInRoom objectInRoomWithHeader:@"乐器" footer:@"这里有一些乐器" content:@[@"🎻", @"🎸", @"🎹"]],
+        [ObjectInRoom objectInRoomWithHeader:@"电子产品" footer:@"这里有一副耳机跟手机" content:@[@"🎧", @"📱"]],
+        [ObjectInRoom objectInRoomWithHeader:@"植物" footer:@"这里有一些植物" content:@[@"🌷", @"🍀", @"🍌", @"🌲"]]
+    ];
 
 
 }
@@ -74,7 +69,7 @@
     return items.content.count;
 }
 
-#pragma mark 每一行具体有什么数据
+#pragma mark 每一行具体有什么数据(每一行显示怎样的cell)
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     //创建一个cell
