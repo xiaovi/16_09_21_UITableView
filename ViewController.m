@@ -14,7 +14,7 @@
 #define kFooter @"footer"   //尾部标题的key
 #define kContent @"content" //显示内容的key
 
-@interface ViewController ()<UITableViewDataSource>
+@interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -46,6 +46,7 @@
                                                   style:UITableViewStyleGrouped];
         //将UITableView的数据源设置为控制器本身.
         _tableView.dataSource = self;
+        _tableView.delegate = self;
     }
     return _tableView;
 }
@@ -82,6 +83,7 @@
     NSArray *item = items.content;
     cell.textLabel.text = item[indexPath.row];
 
+
     return cell;
 }
 
@@ -97,6 +99,15 @@
 
     return [_allList[section] footer];
 
+}
+#pragma mark 显示右边的索引条
+-(NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView{
+    NSMutableArray *items = [NSMutableArray array];
+    
+    for (ObjectInRoom *itemName in _allList) {
+        [items addObject:itemName.header];
+    };
+    return items;
 }
 
 @end
