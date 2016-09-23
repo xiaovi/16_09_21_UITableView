@@ -15,10 +15,13 @@
 #define kContent @"content" //显示内容的key
 
 @interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
+{
+    UITableView *_tableView;
 
-@property (nonatomic, strong) UITableView *tableView;
+    NSArray *_allList;
+}
 
-@property (nonatomic, strong) NSArray *allList;
+
 
 @end
 
@@ -55,6 +58,7 @@
 
 
 #pragma mark 一共有多少组数据
+//若不实现该方法, 则默认返回1.
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return _allList.count;
 }
